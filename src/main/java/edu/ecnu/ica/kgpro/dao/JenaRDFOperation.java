@@ -220,4 +220,8 @@ public class JenaRDFOperation extends JenaOperatable implements Operation{
 		if(object == null) return null;
 		return model.createTypedLiteral(object);
 	}
+	
+	public static void main(String[] args) {
+		Entity entity = new Entity("zwq");
+	}
 }
