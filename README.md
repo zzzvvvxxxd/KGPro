@@ -14,6 +14,8 @@ Builde your own Knowledge Graph (not an Ontology).
 
 > 关于属性和关系
 确实，在自然世界中，predicate可以表示两个事物之间的关系，也可以用来描述一个事务的属性（例如：张三的身高是173cm），但是KGPro将这样的区别弱化，并且全部抽象成Relation，即张三的朋友是李四，张三的身高是173cm这样的描述（知识）都抽象成关系。
+
+
 ###Thing
 基类  
 类似与Java中的Object，Entity和Relation都继承Thing类  
