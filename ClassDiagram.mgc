@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="edu.ecnu.ica.kgpro.dao.Operation" x="404" y="498">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="edu.ecnu.ica.kgpro.dao.TripleDAO"/>
+    </Class>
+    <Class name="edu.ecnu.ica.kgpro.util.SimpleTripleSelector" x="639" y="338">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="edu.ecnu.ica.kgpro.util.Selector"/>
+        <Association
+            destinationClassName="edu.ecnu.ica.kgpro.base.Entity"
+            endpointName="subject" kind="Simple"/>
+        <Association
+            destinationClassName="edu.ecnu.ica.kgpro.base.Relation"
+            endpointName="relation" kind="Simple"/>
+        <Communication destinationClassName="edu.ecnu.ica.kgpro.base.Relation"/>
+        <Communication destinationClassName="edu.ecnu.ica.kgpro.base.Entity"/>
+    </Class>
+    <Class name="edu.ecnu.ica.kgpro.dao.TripleDAO" x="551" y="728">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="edu.ecnu.ica.kgpro.base.Relation" x="345" y="292">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="edu.ecnu.ica.kgpro.base.Thing"/>
+    </Class>
+    <Class name="edu.ecnu.ica.kgpro.util.Selector" x="707" y="486">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="edu.ecnu.ica.kgpro.dao.JenaOperation" x="35" y="413">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="edu.ecnu.ica.kgpro.dao.Operation"/>
+        <Communication destinationClassName="edu.ecnu.ica.kgpro.util.Selector"/>
+        <Communication destinationClassName="edu.ecnu.ica.kgpro.base.Triple"/>
+    </Class>
+    <Class name="edu.ecnu.ica.kgpro.base.Thing" x="624" y="150">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="edu.ecnu.ica.kgpro.base.Triple" x="30" y="131">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="edu.ecnu.ica.kgpro.base.Entity"
+            endpointName="subject" kind="Simple"/>
+        <Association
+            destinationClassName="edu.ecnu.ica.kgpro.base.Relation"
+            endpointName="relation" kind="Simple"/>
+        <Communication destinationClassName="edu.ecnu.ica.kgpro.base.Relation"/>
+        <Communication destinationClassName="edu.ecnu.ica.kgpro.base.Entity"/>
+    </Class>
+    <Class name="edu.ecnu.ica.kgpro.util.TripleIterator" x="869" y="491">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="edu.ecnu.ica.kgpro.util.Common"/>
+    </Class>
+    <Class name="edu.ecnu.ica.kgpro.util.Common" x="866" y="80">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="edu.ecnu.ica.kgpro.dao.TripleDAOImpl" x="133" y="733">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="edu.ecnu.ica.kgpro.dao.TripleDAO"/>
+        <Association
+            destinationClassName="edu.ecnu.ica.kgpro.dao.Operation"
+            endpointName="operation" kind="Simple"/>
+        <Communication destinationClassName="edu.ecnu.ica.kgpro.dao.TripleDAO"/>
+    </Class>
+    <Class name="edu.ecnu.ica.kgpro.base.Entity" x="347" y="59">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="edu.ecnu.ica.kgpro.base.Thing"/>
+    </Class>
+</ClassDiagram>
