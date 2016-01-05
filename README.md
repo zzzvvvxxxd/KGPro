@@ -31,8 +31,10 @@ Entity zwq = new Entity("zwq", "http://ica.ecnu.edu");
 ```
 
 ###Relation
-创建对象的构造方法和Entity类似
+创建对象的构造方法和Entity类似  
+```Java
 Relation isFriend = new Relation("isFriend", "http://ica.ecnu.edu");
+```
 
 ###Triple
 三元组，内部包含三个原子数据：
