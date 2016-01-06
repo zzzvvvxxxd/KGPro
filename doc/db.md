@@ -103,3 +103,40 @@ while(iterator.hasNext()) {
     System.out.println(t);
 }
 ```
+
+为何我们认为我们的操作接口足够强大呢？
+
+```Java
+// query(Selector selector);
+TripleIterator iterator = dao.query(new SimpleTripleSelector(zwq, null, null));
+```
+SimpleTripleSelector可以十分灵活地在数据库中过滤Triple
+你可以在任意的位置指定或者不指定位置
+```Java
+new SimpleTripleSelector(zwq, null, null);   // 查找zwq的所有Triple
+new SimpleTripleSelector(zwq, sex,  null);   // 查找zwq的sex属性
+new SimpleTripleSelector(zwq, name, null);   // 查找所有Relation是name的Triple
+```
+
+还不够？
+你可以像上面的例子一样为query的返回值添加条件，只要是Predicate<Triple>即可。提供了三种逻辑：
+```Java
+and(Predicate<Triple>)
+or(Predicate<Triple>)
+not(Predicate<Triple>)
+```
+
+如果我们希望查询sex为男，age不为23的Triple
+```
+
+// 编写两条简单的规则
+Predicate<Triple t> p1 = (Triple t) -> {
+    return (t.getObject() instanseof Integer) && (t.getObject.equals(23));
+};
+Predicate<Triple t> p2 = (Triple t2) -> {
+    return (t.getObject() instanceof String) && (t.getObject.equals("男"));
+};
+
+//query
+TripleIterator iterator = dao.query().not(p1).and(p2);
+```
