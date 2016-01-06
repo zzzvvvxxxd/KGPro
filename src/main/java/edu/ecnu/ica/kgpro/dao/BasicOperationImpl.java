@@ -9,7 +9,7 @@ import edu.ecnu.ica.kgpro.base.Triple;
 import edu.ecnu.ica.kgpro.util.Selector;
 import edu.ecnu.ica.kgpro.util.TripleIterator;
 
-public class TripleDAOImpl implements TripleDAO{
+public class BasicOperationImpl implements BasicOperation{
 
 	//DAO 操作实现类
 	private Operation operation;
@@ -18,7 +18,7 @@ public class TripleDAOImpl implements TripleDAO{
 	 * Constructor
 	 * @param operation
 	 */
-	public TripleDAOImpl(Operation operation) {
+	public BasicOperationImpl(Operation operation) {
 		this.operation = operation;
 	}
 

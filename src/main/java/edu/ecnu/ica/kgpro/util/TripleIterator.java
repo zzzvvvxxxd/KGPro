@@ -15,8 +15,8 @@ import edu.ecnu.ica.kgpro.base.Entity;
 import edu.ecnu.ica.kgpro.base.Relation;
 import edu.ecnu.ica.kgpro.base.Triple;
 import edu.ecnu.ica.kgpro.dao.JenaRDFOperation;
-import edu.ecnu.ica.kgpro.dao.TripleDAO;
-import edu.ecnu.ica.kgpro.dao.TripleDAOImpl;
+import edu.ecnu.ica.kgpro.dao.BasicOperation;
+import edu.ecnu.ica.kgpro.dao.BasicOperationImpl;
 
 /**
  * 参考org.apache.jena.util.iterator.FilterIterator

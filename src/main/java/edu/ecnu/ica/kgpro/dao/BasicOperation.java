@@ -9,7 +9,7 @@ import edu.ecnu.ica.kgpro.base.Triple;
 import edu.ecnu.ica.kgpro.util.Selector;
 import edu.ecnu.ica.kgpro.util.TripleIterator;
 
-public interface TripleDAO {
+public interface BasicOperation {
 	/**
 	 * 插入Triple
 	 * @param triple

@@ -5,6 +5,6 @@ package edu.ecnu.ica.kgpro.dao;
  * @author zwq
  *
  */
-public interface Operation extends TripleDAO{
+public interface Operation extends BasicOperation{
 
 }

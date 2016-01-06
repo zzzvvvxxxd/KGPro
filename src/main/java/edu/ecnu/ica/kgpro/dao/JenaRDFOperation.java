@@ -188,6 +188,7 @@ public class JenaRDFOperation extends JenaOperatable implements Operation{
 		//     if (arr.contains(object.Class)) {
 		//         // query thing
 		//     }
+		//db.close();
 		END();
 		return new TripleIterator(i);
 	}

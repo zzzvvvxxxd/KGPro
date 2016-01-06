@@ -37,4 +37,8 @@ public class JenaOperatable {
 	protected static final void END() {
 		db.end();
 	}
+	
+	protected static final void CLOSE() {
+		db.close();
+	}
 }
