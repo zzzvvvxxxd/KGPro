@@ -32,5 +32,10 @@
     	<artifactId>jena-tdb</artifactId>
     	<version>3.0.1</version>
     </dependency>
+    <dependency>
+    	<groupId>com.thinkaurelius.titan</groupId>
+    	<artifactId>titan-core</artifactId>
+    	<version>1.0.0</version>
+    </dependency>
   </dependencies>
 </project>

@@ -62,4 +62,6 @@ public interface BasicOperation {
 	 * @return
 	 */
 	public TripleIterator query(Selector selector);
+	
+	public void query(String queryString);
 }

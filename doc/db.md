@@ -126,17 +126,17 @@ or(Predicate<Triple>)
 not(Predicate<Triple>)
 ```
 
-如果我们希望查询sex为男，age不为23的Triple
+如果我们希望查询Integer属性r1,希望查询出所有r1的值大于100,不小于200的Triple
 ```
 
 // 编写两条简单的规则
 Predicate<Triple t> p1 = (Triple t) -> {
-    return (t.getObject() instanseof Integer) && (t.getObject.equals(23));
+    return (t.getObject() instanseof Integer) && (t.getObject.compareTo(100) > 0);
 };
 Predicate<Triple t> p2 = (Triple t2) -> {
-    return (t.getObject() instanceof String) && (t.getObject.equals("男"));
+    return (t.getObject() instanceof String) && (t.getObject.compareTo(200) < 0);
 };
 
 //query
-TripleIterator iterator = dao.query().not(p1).and(p2);
+TripleIterator iterator = dao.query(new SimpleSelector(null, r1, null)).and(p1).and(p2);
 ```

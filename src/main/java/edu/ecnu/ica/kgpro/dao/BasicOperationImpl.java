@@ -54,4 +54,8 @@ public class BasicOperationImpl implements BasicOperation{
 	public boolean insert(List<Triple> list) {
 		return operation.insert(list);
 	}
+
+	@Override
+	public void query(String queryString) {
+	}
 }

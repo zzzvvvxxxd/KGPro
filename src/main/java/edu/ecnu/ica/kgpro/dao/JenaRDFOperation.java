@@ -225,4 +225,8 @@ public class JenaRDFOperation extends JenaOperatable implements Operation{
 	public static void main(String[] args) {
 		Entity entity = new Entity("zwq");
 	}
+
+	@Override
+	public void query(String queryString) {
+	}
 }
