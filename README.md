@@ -54,7 +54,7 @@ Triple t4 = new Triple(zwq, income, 555.55);
 
 # 知识图谱操作
 
-![示例](http://i13.tietuku.com/f3fe697b41dfe908.gif)
+![示例](https://raw.githubusercontent.com/zzzvvvxxxd/KGPro/master/1.gif)
 
 上面gif是我之上学期期末半天作的一个演示Demo，对KGPro做了最简单的演示，并在下方实时显示后台查询使用的代码。以供参考。  
 
