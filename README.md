@@ -4,6 +4,9 @@ VERSION: 0.0.1
 
 Builde your own Knowledge Graph (not an Ontology).
 
+![1](https://raw.githubusercontent.com/zzzvvvxxxd/KGPro/master/1.png)
+
+
 ## 基本概念
 |Concept   |      描述             |      备注                |
 |:--------:|:--------------------:|:------------------------|
@@ -202,4 +205,7 @@ TripleIterator iterator = dao.query(new SimpleSelector(null, r1, null)).and(p1).
 ```
 
 #How to Contribute？
-Just pull request.  
+Just pull request.
+
+#TODO and AUTHOR
+![](https://raw.githubusercontent.com/zzzvvvxxxd/KGPro/master/2.png)
