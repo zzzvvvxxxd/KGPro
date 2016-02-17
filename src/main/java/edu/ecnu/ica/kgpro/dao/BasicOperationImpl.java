@@ -1,6 +1,5 @@
 package edu.ecnu.ica.kgpro.dao;
 
-import java.util.Iterator;
 import java.util.List;
 
 import edu.ecnu.ica.kgpro.base.Entity;
@@ -57,5 +56,10 @@ public class BasicOperationImpl implements BasicOperation{
 
 	@Override
 	public void query(String queryString) {
+	}
+
+	@Override
+	public List<Triple> list(Entity entity, int expendLayer) {
+		return this.operation.list(entity, expendLayer);
 	}
 }

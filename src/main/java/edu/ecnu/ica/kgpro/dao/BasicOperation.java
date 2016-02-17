@@ -64,4 +64,6 @@ public interface BasicOperation {
 	public TripleIterator query(Selector selector);
 	
 	public void query(String queryString);
+	
+	public List<Triple> list(Entity entity, int expendLayer);
 }

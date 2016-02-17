@@ -5,19 +5,9 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-import org.apache.jena.rdf.model.RDFNode;
-import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
-import org.apache.jena.shared.AddDeniedException;
-
-import edu.ecnu.ica.kgpro.base.Entity;
-import edu.ecnu.ica.kgpro.base.Relation;
 import edu.ecnu.ica.kgpro.base.Triple;
-import edu.ecnu.ica.kgpro.dao.JenaRDFOperation;
-import edu.ecnu.ica.kgpro.dao.BasicOperation;
-import edu.ecnu.ica.kgpro.dao.BasicOperationImpl;
-
 /**
  * 参考org.apache.jena.util.iterator.FilterIterator
  * @author zwq
@@ -27,9 +17,9 @@ public class TripleIterator implements Iterator<Triple>{
 	protected boolean can = true;
 	
 	Triple current;
-	Statement s;
+	Object s = null;
 	
-	private StmtIterator iterator;
+	private Iterator iterator;
 	protected boolean hasCurrent = false;		//默认初始化false
 	private Predicate<Triple> predicate = null;
 	
@@ -37,11 +27,11 @@ public class TripleIterator implements Iterator<Triple>{
 	 * 后期可能还是会封装成代理类，但是目前不这样做 2015.1.2
 	 * 上面这句我在说什么？ 2015.1.5
 	 */
-	public TripleIterator(StmtIterator iterator) {
+	public TripleIterator(Iterator iterator) {
 		this.iterator = iterator;
 	}
 	
-	public TripleIterator(StmtIterator iterator, Predicate<Triple> pre) {
+	public TripleIterator(Iterator iterator, Predicate<Triple> pre) {
 		this.iterator = iterator;
 		predicate = pre;
 	}
@@ -49,7 +39,7 @@ public class TripleIterator implements Iterator<Triple>{
 	public boolean hasNext() {
 		if (Objects.nonNull(this.predicate)){
 			while (this.iterator.hasNext() && !hasCurrent){
-	            hasCurrent = predicate.test( current = Common.toTriple(s = this.iterator.next()) );
+	            hasCurrent = this.predicate.test( current = Common.toTriple(s = this.iterator.next()) );
 			}
 			return hasCurrent;
 		} else {
@@ -69,11 +59,12 @@ public class TripleIterator implements Iterator<Triple>{
 		throw new NoSuchElementException();
 	}
 	
-	public TripleIterator and(Predicate<Triple> p) {
+	public TripleIterator and(
+			Predicate<Triple> p) {
 		if(Objects.isNull(this.predicate)){
 			this.predicate = p;
 		} else {
-			this.predicate.and(p);
+			this.predicate = this.predicate.and(p);
 		}
 		return this;
 	}
@@ -82,7 +73,7 @@ public class TripleIterator implements Iterator<Triple>{
 		if(Objects.isNull(this.predicate)){
 			this.predicate = p;
 		} else {
-			this.predicate.or(p);
+			this.predicate = this.predicate.or(p);
 		}
 		return this;
 	}
@@ -91,7 +82,7 @@ public class TripleIterator implements Iterator<Triple>{
 		if(Objects.isNull(this.predicate)){
 			this.predicate = p;
 		} else {
-			this.predicate.and(p.negate());
+			this.predicate = this.predicate.and(p.negate());
 		}
 		return this;
 	}

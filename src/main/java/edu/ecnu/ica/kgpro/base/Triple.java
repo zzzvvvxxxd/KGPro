@@ -1,12 +1,5 @@
 package edu.ecnu.ica.kgpro.base;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
-import org.hamcrest.core.IsInstanceOf;
-
-import edu.ecnu.ica.kgpro.tdb.TDBUtil;
-
 
 public class Triple {
 	protected Entity   subject;

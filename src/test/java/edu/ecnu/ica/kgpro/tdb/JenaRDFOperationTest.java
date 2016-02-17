@@ -1,20 +1,17 @@
 package edu.ecnu.ica.kgpro.tdb;
 
-import static org.junit.Assert.*;
-
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.junit.Test;
 
 import edu.ecnu.ica.kgpro.base.Entity;
-import edu.ecnu.ica.kgpro.base.Relation;
 import edu.ecnu.ica.kgpro.base.Triple;
-import edu.ecnu.ica.kgpro.dao.JenaRDFOperation;
-import edu.ecnu.ica.kgpro.dao.Operation;
 import edu.ecnu.ica.kgpro.dao.BasicOperation;
 import edu.ecnu.ica.kgpro.dao.BasicOperationImpl;
-import edu.ecnu.ica.kgpro.util.Selector;
+import edu.ecnu.ica.kgpro.dao.JenaRDFOperation;
+import edu.ecnu.ica.kgpro.ioutil.ExcelUtil;
+import edu.ecnu.ica.kgpro.util.Common;
 import edu.ecnu.ica.kgpro.util.SimpleTripleSelector;
 import edu.ecnu.ica.kgpro.util.TripleIterator;
 
@@ -22,22 +19,28 @@ public class JenaRDFOperationTest {
 
 	@Test
 	public void test() {
-		Entity zwq = new Entity("zwq");
-		Relation sex = new Relation("sex");
-		Triple triple = new Triple(zwq, sex, "男");
+		BasicOperation dao = new BasicOperationImpl(new JenaRDFOperation(
+				new JenaParams() {
+					@Override
+					public String get(String name) {
+						switch (name) {
+						case "dbpath":
+							return "./DB/";
+						default:
+							return null;
+						}
+					}
+				}
+				));
 		
-		BasicOperation dao = new BasicOperationImpl(new JenaRDFOperation());
-		
-		Predicate<Triple> predicate = (Triple t) -> {
-			return (t.getObject() instanceof Integer) && (Integer)t.getObject() > 500
-					&& (Integer)t.getObject() < 550;
-		};
-		
-		TripleIterator iterator = dao.query(new SimpleTripleSelector(zwq, null, 500));
-		while(iterator.hasNext()) {
-			Triple t = iterator.next();
+		Entity person = new Entity("20", Common.BASE + "baseinfo/");
+		TripleIterator result = dao.query(new SimpleTripleSelector(person, null, null));
+		while(result.hasNext()) {
+			Triple t = result.next();
 			System.out.println(t);
 		}
 	}
-
 }
+
+
+

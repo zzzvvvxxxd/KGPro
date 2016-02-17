@@ -4,7 +4,7 @@
 
   <groupId>edu.ecnu.ica.kgpro</groupId>
   <artifactId>knowledge-graph</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
 
   <name>knowledge-graph</name>
@@ -36,6 +36,16 @@
     	<groupId>com.thinkaurelius.titan</groupId>
     	<artifactId>titan-core</artifactId>
     	<version>1.0.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.apache.poi</groupId>
+    	<artifactId>poi</artifactId>
+    	<version>3.9</version>
+    </dependency>
+    <dependency>
+    	<groupId>xml-apis</groupId>
+    	<artifactId>xml-apis</artifactId>
+    	<version>1.4.01</version>
     </dependency>
   </dependencies>
 </project>

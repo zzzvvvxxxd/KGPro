@@ -1,6 +1,8 @@
 package edu.ecnu.ica.kgpro.dao;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import org.apache.jena.graph.Graph;
 import org.apache.jena.graph.Node;
@@ -19,9 +21,11 @@ import edu.ecnu.ica.kgpro.base.Entity;
 import edu.ecnu.ica.kgpro.base.Relation;
 import edu.ecnu.ica.kgpro.base.Triple;
 import edu.ecnu.ica.kgpro.tdb.JenaOperatable;
+import edu.ecnu.ica.kgpro.tdb.JenaParams;
 import edu.ecnu.ica.kgpro.tdb.TDBConnection;
-import edu.ecnu.ica.kgpro.tdb.TDBUtil;
+import edu.ecnu.ica.kgpro.util.Common;
 import edu.ecnu.ica.kgpro.util.Selector;
+import edu.ecnu.ica.kgpro.util.SimpleTripleSelector;
 import edu.ecnu.ica.kgpro.util.TripleIterator;
 
 /**
@@ -30,6 +34,10 @@ import edu.ecnu.ica.kgpro.util.TripleIterator;
  *
  */
 public class JenaRDFOperation extends JenaOperatable implements Operation{
+	
+	public JenaRDFOperation(JenaParams params) {
+		super(params);
+	}
 	
 	/**
 	 * 向Jena数据库插入一条三元组
@@ -191,6 +199,38 @@ public class JenaRDFOperation extends JenaOperatable implements Operation{
 		//db.close();
 		END();
 		return new TripleIterator(i);
+	}
+	
+	@Override
+	public List<Triple> list(Entity entity, int expendLayer) {
+		//用于返回的list实例
+		List<Triple> result = new ArrayList<>();
+		//查询Entity栈
+		Stack<Entity> stack = new Stack<>();
+		stack.push(entity);
+		Stack<Entity> temp = new Stack<>();
+		while(expendLayer > 0) {
+			while(!stack.empty()) {
+				Entity e = stack.pop();
+				TripleIterator iterator = query(new SimpleTripleSelector(e, null, null));
+				temp.clear(); //清空temp。准备push该层的节点进去
+				//遍历iterator，插入list中，这段代码可以不看
+				while(iterator.hasNext()) {
+					// 可否放set函数返回this，这样可以直接
+					// list.add(new GraphNode().set().set().set())一行代码
+					
+					//获取triple
+					Triple t = iterator.next();
+					Entity object = (Entity) t.getObject();   //目前数据库中全部存取的是Entity类型的宾语，所以这里不用类型判断
+					temp.push(object);
+					result.add(t);
+				}
+			}
+			// stack empty
+			stack.addAll(temp);
+			expendLayer --;
+		}
+		return result;
 	}
 	
 	/**

@@ -1,10 +1,9 @@
 package edu.ecnu.ica.kgpro.tdb;
 
-import java.util.ArrayList;
 
 import org.apache.jena.query.Dataset;
 import org.apache.jena.query.ReadWrite;
-import org.apache.jena.rdf.model.Model;
+import org.apache.jena.tdb.TDBFactory;
 
 /**
  * TDB事务原子操作类
@@ -12,9 +11,14 @@ import org.apache.jena.rdf.model.Model;
  *
  */
 public class JenaOperatable {
-	protected static Dataset db;
-	static{
-		db = TDBConnection.getDataSet();
+	protected static Dataset db = null;
+	protected static String path;
+	
+	public JenaOperatable(JenaParams params) {
+		path = params.get("dbpath"); 
+		if(db == null) {
+			db = TDBFactory.createDataset(path);
+		}
 	}
 	
 	protected final void WRITE() {

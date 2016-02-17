@@ -7,7 +7,7 @@ import edu.ecnu.ica.kgpro.tdb.JenaOperatable;
 
 public class Thing{
 	static final String DEFAULT_NAMESPACE = "http://www.ica.stc.sh.cn/kg/";
-	protected String base = "http://www.ica.stc.sh.cn/kg/";
+	protected String base = DEFAULT_NAMESPACE;
 	protected String name = null;
 
 	public Thing() {
