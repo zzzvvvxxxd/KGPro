@@ -183,7 +183,7 @@ not(Predicate<Triple>)
 > Predicate需要JDK1.8，是Java的函数式编程提供的新的API
 
 如果我们希望查询Integer属性r1,希望查询出所有r1的值大于100,不小于200的Triple
-```
+```Java
 
 // 编写两条简单的规则
 Predicate<Triple t> p1 = (Triple t) -> {
